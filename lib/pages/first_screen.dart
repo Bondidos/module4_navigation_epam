@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:module4_navigation_epam/pages/second_page.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -23,13 +22,11 @@ class FirstPage extends StatelessWidget {
   }
 
   Future<void> navigateSecondPage(BuildContext context) async {
-    await Navigator.push(
+    await Navigator.pushNamed(
       context,
-      MaterialPageRoute(
-        builder: (BuildContext context) =>
-        const SecondPage(messageFromFirst: "Hello from page 1"),
-      ),
-    ).then((value) => showAlert(context, value));
+      '/second',
+      arguments: 'Hell!(o) from first page',
+    ).then((value) => showAlert(context, value as String));
   }
 
   Future<bool> exitDialog(BuildContext context) async => await showDialog(
@@ -54,19 +51,18 @@ class FirstPage extends StatelessWidget {
     return showDialog<void>(
       context: context,
       barrierDismissible: true,
-      builder: (context) =>
-          AlertDialog(
-            title: const Text("Message from second page is:"),
-            content: Text(result),
-            actions: [
-              MaterialButton(
-                child: const Text("Ok"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          ),
+      builder: (context) => AlertDialog(
+        title: const Text("Message from second page is:"),
+        content: Text(result),
+        actions: [
+          MaterialButton(
+            child: const Text("Ok"),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+      ),
     );
   }
 }
