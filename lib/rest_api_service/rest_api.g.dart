@@ -16,7 +16,6 @@ class _RestClient implements RestClient {
   final Dio _dio;
 
   String? baseUrl;
-  Logger logger = Logger();
 
   @override
   Future<List<User>> getUsers() async {
@@ -32,8 +31,6 @@ class _RestClient implements RestClient {
     var value = _result.data!
         .map((dynamic i) => User.fromJson(i as Map<String, dynamic>))
         .toList();
-    logger.d(value);
-
     return value;
   }
 

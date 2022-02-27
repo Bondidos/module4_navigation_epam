@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:module4_navigation_epam/pages/first_screen.dart';
 import 'package:module4_navigation_epam/pages/second_page.dart';

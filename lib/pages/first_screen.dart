@@ -26,7 +26,7 @@ class FirstPage extends StatelessWidget {
       context,
       '/second',
       arguments: 'Hell!(o) from first page',
-    ).then((value) => showAlert(context, value as String));
+    ).then((value) => showAlert(context, value.toString()));
   }
 
   Future<bool> exitDialog(BuildContext context) async => await showDialog(

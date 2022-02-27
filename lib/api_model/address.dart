@@ -19,6 +19,6 @@ class Address {
 
   @override
   String toString() {
-    return 'Address{street: $street, suite: $suite, city: $city, zipcode: $zipcode, geo: $geo}';
+    return 'street: $street \nsuite: $suite \ncity: $city \nzipcode: $zipcode \ngeo: $geo';
   }
 }

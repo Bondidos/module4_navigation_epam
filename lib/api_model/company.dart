@@ -14,6 +14,6 @@ class Company {
 
   @override
   String toString() {
-    return 'Company{name: $name, catchPhrase: $catchPhrase, bs: $bs}';
+    return 'name: $name \ncatchPhrase: $catchPhrase \nbs: $bs';
   }
 }
