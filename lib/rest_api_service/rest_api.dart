@@ -1,6 +1,5 @@
 
 import 'package:dio/dio.dart';
-import 'package:logger/logger.dart';
 import 'package:module4_navigation_epam/api_model/user.dart';
 import 'package:retrofit/retrofit.dart';
 
