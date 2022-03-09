@@ -1,14 +1,21 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:module4_navigation_epam/api_model/user.dart';
+import 'package:module4_navigation_epam/generated/l10n.dart';
 import 'package:module4_navigation_epam/rest_api_service/rest_api.dart';
 
-class SecondPage extends StatelessWidget {
+class SecondPage extends StatefulWidget {
   final String messageFromFirst;
 
-  SecondPage({Key? key, required this.messageFromFirst}) : super(key: key);
+  const SecondPage({Key? key, required this.messageFromFirst}) : super(key: key);
 
+  @override
+  State<SecondPage> createState() => _SecondPageState();
+}
+
+class _SecondPageState extends State<SecondPage> {
   final RestClient client = RestClient(Dio());
+
   var _isLoading = false;
 
   Future<List<User>> getUsersFromApi() async {
@@ -39,13 +46,13 @@ class SecondPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("User nickname: " + user.username),
-            Text("User name: " + user.name),
-            Text("User email: " + user.email),
-            Text("Address: " + user.address.toString()),
-            Text("User phone: " + user.phone),
-            Text("User website: " + user.website),
-            Text("User company: " + user.company.toString()),
+            Text(S.of(context).userNickname + user.username),
+            Text(S.of(context).userName + user.name),
+            Text(S.of(context).userEmail + user.email),
+            Text(S.of(context).address + user.address.toString()),
+            Text(S.of(context).userPhone + user.phone),
+            Text(S.of(context).userWebsite + user.website),
+            Text(S.of(context).userCompany + user.company.toString()),
           ],
         ),
       ),
@@ -56,7 +63,7 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Second page"),
+        title: Text(S.of(context).secondPageAppBarTitle),
       ),
       body: Center(
         child: FutureBuilder(

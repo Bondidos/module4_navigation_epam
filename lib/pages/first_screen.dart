@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:module4_navigation_epam/generated/l10n.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -9,12 +10,12 @@ class FirstPage extends StatelessWidget {
       onWillPop: () => exitDialog(context),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("First Page"),
+          title: Text(S.of(context).firstPageAppBarTitle),
         ),
         body: Center(
           child: MaterialButton(
             onPressed: () => navigateSecondPage(context),
-            child: const Text("Navigate second page"),
+            child: Text(S.of(context).actionButtonTitle),
           ),
         ),
       ),
@@ -22,25 +23,26 @@ class FirstPage extends StatelessWidget {
   }
 
   Future<void> navigateSecondPage(BuildContext context) async {
-    await Navigator.pushNamed(
+    var answer = await Navigator.pushNamed(
       context,
       '/second',
-      arguments: 'Hell!(o) from first page',
-    ).then((value) => showAlert(context, value.toString()));
+      arguments: S.of(context).messageToSecondPage,
+    );
+    (answer != null) ? showAlert(context, answer.toString()) : null;
   }
 
   Future<bool> exitDialog(BuildContext context) async => await showDialog(
         context: context,
         barrierDismissible: false,
         builder: (context) => AlertDialog(
-          title: const Text("Are you sure whant to exit?"),
+          title: Text(S.of(context).confirmExitDialog),
           actions: <Widget>[
             MaterialButton(
-              child: const Text("Yes"),
+              child: Text(S.of(context).confirmYes),
               onPressed: () => Navigator.of(context).pop(true),
             ),
             MaterialButton(
-              child: const Text("No"),
+              child: Text(S.of(context).confirmNo),
               onPressed: () => Navigator.of(context).pop(false),
             )
           ],
@@ -52,11 +54,11 @@ class FirstPage extends StatelessWidget {
       context: context,
       barrierDismissible: true,
       builder: (context) => AlertDialog(
-        title: const Text("Message from second page is:"),
+        title: Text(S.of(context).alertFromSecondTitle),
         content: Text(result),
         actions: [
           MaterialButton(
-            child: const Text("Ok"),
+            child: Text(S.of(context).confirmOk),
             onPressed: () {
               Navigator.of(context).pop();
             },

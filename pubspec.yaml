@@ -15,12 +15,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^1.0.2
   dio: ^4.0.4
   retrofit: ^3.0.1+1
   logger: ^1.1.0
   json_annotation: ^4.4.0
+  intl: ^0.17.0
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -31,14 +33,9 @@ dev_dependencies:
   json_serializable: ^6.1.4
   retrofit_generator: ^4.0.1
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
+flutter_intl:
+  main_locale: en_US
+  enabled: true
