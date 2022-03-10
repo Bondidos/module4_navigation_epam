@@ -1,0 +1,20 @@
+{
+  "@@locale": "ru_RU",
+  "appTitle": "ЭПАМ Лаба",
+  "firstPageAppBarTitle": "Первая страница",
+  "secondPageAppBarTitle": "Вторая страница",
+  "actionButtonTitle": "Перейти на вторую страницу",
+  "messageToSecondPage": "Привет с первой страницы",
+  "confirmExitDialog": "Вы действительно хотите выйти?",
+  "confirmYes": "Да",
+  "confirmNo": "Нет",
+  "alertFromSecondTitle": "Сообщение от второй страницы:",
+  "confirmOk": "Хорошо",
+  "userNickname": "Псевдоним: ",
+  "userName": "Имя пользователя: ",
+  "userEmail": "Электронная почта: ",
+  "address": "Адрес: ",
+  "userPhone": "Телефон: ",
+  "userWebsite": "Интернет страничка: ",
+  "userCompany": "Компания: "
+}

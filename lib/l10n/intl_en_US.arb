@@ -1,0 +1,20 @@
+{
+  "@@locale": "en_US",
+  "appTitle": "Epam Lab",
+  "firstPageAppBarTitle": "First Page",
+  "secondPageAppBarTitle": "Second page",
+  "actionButtonTitle": "Navigate second page",
+  "messageToSecondPage": "Hell!(o) from first page",
+  "confirmExitDialog": "Are you sure want to exit?",
+  "confirmYes": "Yes",
+  "confirmNo": "No",
+  "alertFromSecondTitle": "Message from second page is:",
+  "confirmOk": "Ok",
+  "userNickname": "User nickname: ",
+  "userName": "User name: ",
+  "userEmail": "User email: ",
+  "address": "Address: ",
+  "userPhone": "User phone: ",
+  "userWebsite": "User website: ",
+  "userCompany": "User company: "
+}
