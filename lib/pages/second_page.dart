@@ -1,32 +1,30 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:module4_navigation_epam/api_model/user.dart';
 import 'package:module4_navigation_epam/rest_api_service/rest_api.dart';
 
 class SecondPage extends StatelessWidget {
   final String messageFromFirst;
 
-  SecondPage({Key? key, required this.messageFromFirst})
-      : super(key: key);
+  SecondPage({Key? key, required this.messageFromFirst}) : super(key: key);
 
   final RestClient client = RestClient(Dio());
-  final logger = Logger();
+  var _isLoading = false;
 
   Future<List<User>> getUsersFromApi() async {
     try {
-      return await client.getUsers();
+      var list = await client.getUsers();
+      _isLoading = true;
+      return list;
     } catch (error) {
       ErrorWidget(error);
     }
     return [];
   }
 
-  _onTap(BuildContext context, User user) => Navigator.pop(context,user);
+  _onTap(BuildContext context, User user) => Navigator.pop(context, user);
 
   Widget userItem(User user, BuildContext context) {
-
     return GestureDetector(
       onTap: () => _onTap(context, user),
       child: Container(
@@ -41,19 +39,18 @@ class SecondPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("User nickname: "+user.username),
-            Text("User name: "+user.name),
-            Text("User email: "+user.email),
-            Text("Address: "+user.address.toString()),
-            Text("User phone: "+user.phone),
-            Text("User website: "+user.website),
-            Text("User company: "+user.company.toString()),
+            Text("User nickname: " + user.username),
+            Text("User name: " + user.name),
+            Text("User email: " + user.email),
+            Text("Address: " + user.address.toString()),
+            Text("User phone: " + user.phone),
+            Text("User website: " + user.website),
+            Text("User company: " + user.company.toString()),
           ],
         ),
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -65,14 +62,18 @@ class SecondPage extends StatelessWidget {
         child: FutureBuilder(
           future: getUsersFromApi(),
           builder: (BuildContext context, AsyncSnapshot<List<User>> snapshot) {
-            return ListView.builder(
-              itemCount: snapshot.data?.length,
-              itemBuilder: (BuildContext context, int index) {
-                return (snapshot.data != null) 
-                    ? userItem(snapshot.data![index], context) 
-                    : Container();
-              },
-            );
+            return (_isLoading)
+                ? ListView.builder(
+                    itemCount: snapshot.data?.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return (snapshot.data != null)
+                          ? userItem(snapshot.data![index], context)
+                          : Container();
+                    },
+                  )
+                : const CircularProgressIndicator(
+                    strokeWidth: 8,
+                  );
           },
         ),
       ),
